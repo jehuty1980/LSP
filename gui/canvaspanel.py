@@ -47,6 +47,8 @@ class CanvasPanel(wx.Window):
         self.has_image = False
         self.tmp_rect = wx.Rect(0, 0, 0, 0)  # 暂存上次视图更新时的右键框选范围
 
+        self.SetBackgroundColour(wx.Colour(192, 192, 192))
+
         # 消息处理
         self.Bind(wx.EVT_PAINT, self.OnPaint)
         self.Bind(wx.EVT_SIZE, self.OnSized)
