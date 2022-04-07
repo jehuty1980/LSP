@@ -99,15 +99,16 @@ class MyFrame(wx.Frame):
              打开文件    (Ctrl +) O，左键双击
              全屏切换    Enter，中键单击
              退出程序    Esc
-             恢复面板    (Ctrl +) H
-             图像列表    (Ctrl +) F切换隐藏和显示
-             局部放大    右键框选（每个面板）
-             重置比例    右键双击（每个面板）
-             适应尺寸    Ctrl + 中键（每个面板，在适应全部、高度和宽度中轮换）
              浏览图片    滚轮，Backspace|Space，←|→，PgUp|PgDn，(Ctrl +) A|D
              放大图片    Ctrl + 滚轮
              拖动图片    左键拖拽
+             局部放大    右键框选（每个面板）
+             重置比例    右键双击（每个面板）
+             适应尺寸    Ctrl + 中键（每个面板，在适应全部、高度和宽度中轮换）
              旋转图片    (Ctrl +) R|L
+             恢复面板    (Ctrl +) H
+             图像列表    (Ctrl +) F切换隐藏和显示
+             面板布局    (Ctrl +) T
   ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   键盘操作时关闭中文输入法可不按Ctrl，图片缩放限制为窗口的一半到四倍"""
         licence = """LSP is a free software
@@ -118,7 +119,7 @@ class MyFrame(wx.Frame):
         info.SetVersion('1.0.0')
         info.SetDescription(description)
         info.SetCopyright('(C) 2022 - 2233')
-        info.SetWebSite('https://gitee.com/jehuty1980')
+        info.SetWebSite('https://github.com/jehuty1980')
         info.SetLicence(licence)
         info.AddDeveloper('jehuty1980')
 
