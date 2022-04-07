@@ -1,4 +1,5 @@
 from PIL import Image
+import pillow_avif
 import cv2
 import numpy as np
 import logging
