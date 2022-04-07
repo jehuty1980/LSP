@@ -83,7 +83,7 @@ class Container(object):
                               '.im', '.iim', '.jfif', '.jpe', '.jpeg', '.jpg', '.j2c', '.j2k', '.jp2', '.jpc', '.jpf',
                               '.jpx', '.mpeg', '.mpg', '.msp', '.pcd', '.pcx', '.pxr', '.apng', '.png', '.pbm', '.pgm',
                               '.pnm', '.ppm', '.psd', '.bw', '.rgb', '.rgba', '.sgi', '.ras', '.icb', '.tga', '.vda',
-                              '.vst', '.tif', '.tiff', '.webp', '.emf', '.wmf', '.xbm', '.xpm']
+                              '.vst', '.tif', '.tiff', '.webp', '.emf', '.wmf', '.xbm', '.xpm','.avif']
         self.compressed_file_supported = ['.rar', '.zip', '.cbz', '.cbr']
         self.img_path = Path.cwd()
         self.img_idx = 0
