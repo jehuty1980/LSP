@@ -1,13 +1,17 @@
 # LSP
 CG browser, special for differential illustrations.
 
-Support most image type and .zip .cbz .rar .cbr compress file.
+Support most image types and .zip .cbz .rar .cbr compress file.
+
+Able to zoom up part of an image like this:
+
+![ScreenShot](screenshot/sample.png)
 
 Require UnRAR to handle compressed files:https://www.rarlab.com/rar_add.htm
 
 Only support 64bit Windows.
 
-Operation:
+Operations:
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -27,7 +31,7 @@ Operation:
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-专门用来浏览差分图像的软件，支持常见图像和压缩文件格式。
+专门用来浏览差分图像的软件，支持常见图像和压缩文件格式。可以在面板中局部放大图像的一部分。
 
 图形界面使用的wx，压缩文件解压用到了zipfile和rarfile，需要使用外部的UnRAR：https://www.rarlab.com/rar_add.htm
 
