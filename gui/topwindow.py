@@ -3,6 +3,15 @@ import wx.adv
 from pathlib import Path
 from pubsub import pub
 
+class MyFileDropTarget(wx.FileDropTarget):
+    def __init__(self):
+        wx.FileDropTarget.__init__(self)
+
+    def OnDropFiles(self, x, y, filenames):
+        filename=filenames[0]
+        pub.sendMessage('open.file', msg=(filename,))
+        return True
+
 
 class MyFrame(wx.Frame):
     """
@@ -14,6 +23,8 @@ class MyFrame(wx.Frame):
         super(MyFrame, self).__init__(None, title=title, size=(
             wx.SystemSettings.GetMetric(wx.SYS_SCREEN_X) // 5 * 4,
             wx.SystemSettings.GetMetric(wx.SYS_SCREEN_Y) // 5 * 4))
+        self.file_drop_target = MyFileDropTarget()
+        self.SetDropTarget(self.file_drop_target)
         self.status_bar = self.CreateStatusBar()
         self.status_bar.SetFieldsCount(3, [-14, -1, -1])
         self.status_bar.SetStatusText('Press F1 for help!', 0)
@@ -41,7 +52,7 @@ class MyFrame(wx.Frame):
             wx.CallLater(250, self.SetCursor, wx.Cursor(wx.CURSOR_ARROW))
 
     def open_file_dialog(self, msg):
-        wildcard ='Supported Files|*.blp;*.bmp;*.bufr;*.cur;*.dcx;*.dds;*.dib;*.eps;*.ps;*.fit;*.fits;*.flc;*.fli;*.ftc;*.ftu;*.gbr;*.gif;*.grib;*.h5;*.hdf;*.icns;*.ico;*.im;*.iim;*.jfif;*.jpe;*.jpeg;*.jpg;*.j2c;*.j2k;*.jp2;*.jpc;*.jpf;*.jpx;*.mpeg;*.mpg;*.msp;*.pcd;*.pcx;*.pxr;*.apng;*.png;*.pbm;*.pgm;*.pnm;*.ppm;*.psd;*.bw;*.rgb;*.rgba;*.sgi;*.ras;*.icb;*.tga;*.vda;*.vst;*.tif;*.tiff;*.webp;*.emf;*.wmf;*.xbm;*.xpm;*.zip;*.rar;*.cbz;*.cbr|All Files|*.*'
+        wildcard ='Supported Files|*.blp;*.bmp;*.bufr;*.cur;*.dcx;*.dds;*.dib;*.eps;*.ps;*.fit;*.fits;*.flc;*.fli;*.ftc;*.ftu;*.gbr;*.gif;*.grib;*.h5;*.hdf;*.icns;*.ico;*.im;*.iim;*.jfif;*.jpe;*.jpeg;*.jpg;*.j2c;*.j2k;*.jp2;*.jpc;*.jpf;*.jpx;*.mpeg;*.mpg;*.msp;*.pcd;*.pcx;*.pxr;*.apng;*.png;*.pbm;*.pgm;*.pnm;*.ppm;*.psd;*.bw;*.rgb;*.rgba;*.sgi;*.ras;*.icb;*.tga;*.vda;*.vst;*.tif;*.tiff;*.webp;*.emf;*.wmf;*.xbm;*.xpm;*.zip;*.rar;*.cbz;*.cbr;*.avif|All Files|*.*'
         file_dialog = wx.FileDialog(parent=self, message="打开图像文件",
                                     defaultDir=str(self.cwd),
                                     style=wx.FD_OPEN,
@@ -89,6 +100,7 @@ class MyFrame(wx.Frame):
         self.status_bar.SetStatusText(pos, 2)
 
         self.cwd = path
+
 
     def about_box(self):
         description = """  LSP是专门用来浏览差分图像的软件，极简设计，支持常见图像和压缩文件格式。
